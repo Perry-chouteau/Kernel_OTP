@@ -108,21 +108,26 @@ static int device_open(struct inode *inode, struct file *file)
     if (atomic_cmpxchg(&already_open, CDEV_NOT_USED, CDEV_EXCLUSIVE_OPEN))
         return -EBUSY;
 
+    // Get the current time in nanoseconds since boot (not affected by system clock changes)
+    kt = ktime_get();
+    tmp = ktime_to_ns(kt);
+
     if (otp_type == false) { //Give Code
-        sprintf(msg, "new code: %s\n", code_array[counter++]);
+        // Update timeout only if the time has exceeded the previous timeout window
+        if (tmp >= nanoseconds) {
+            nanoseconds = tmp + (timeout * SECOND);
+            counter++;
+        }
         if (code_array[counter] == NULL) {
             counter = 0;
         }
+        sprintf(msg, "%s\n", code_array[counter]);
     } else { // Generate Code
-        // Get the current time in nanoseconds since boot (not affected by system clock changes)
-        kt = ktime_get();
-        tmp = ktime_to_ns(kt);
-
         // Update timeout only if the time has exceeded the previous timeout window
         if (tmp >= nanoseconds) {
             nanoseconds = tmp + (timeout * SECOND);
         }
-        sprintf(msg, "code: %s%lld\n", client_key, nanoseconds % SECOND);
+        sprintf(msg, "%s%lld\n", client_key, nanoseconds % SECOND);
     }
     try_module_get(THIS_MODULE);
 
