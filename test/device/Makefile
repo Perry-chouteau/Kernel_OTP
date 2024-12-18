@@ -1,5 +1,7 @@
-obj-m += hello-3.o
+obj-m += main.o
 PWD := $(CURDIR)
+
+#CFLAGS=-std=c99
 
 all:
 		make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

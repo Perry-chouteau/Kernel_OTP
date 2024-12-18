@@ -1,3 +1,12 @@
+# Docs
+
+https://sysprog21.github.io/lkmpg/
+https://www.kernel.org
+https://kernelnewbies.org/Module
+
+other:
+https://tldp.org/LDP/lkmpg/2.6/html/x121.html
+
 #  Unblock your coding day
 
 Vscode, etc sudo mode from terminal:  `sudo chown -R k /home/k/` (used to create file, folder etc..)

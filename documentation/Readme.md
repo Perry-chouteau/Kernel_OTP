@@ -1,4 +1,4 @@
-# OTP Module
+# OTP Kernel Module
 
 ## Description
 
