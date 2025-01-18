@@ -11,6 +11,26 @@ https://tldp.org/LDP/lkmpg/2.6/html/x121.html
 
 Vscode, etc sudo mode from terminal:  `sudo chown -R k /home/k/` (used to create file, folder etc..)
 
+# Run qemu instance (tested on macos ARM)
+
+1) boot qemu instance
+
+```sh
+qemu-system-aarch64 \
+  -machine virt \
+  -cpu cortex-a72 \
+  -m 2048 \
+  -bios /opt/homebrew/share/qemu/edk2-aarch64-code.fd \
+  -drive file=linux-dev.qcow2,if=virtio,format=qcow2 \
+  -cdrom ubuntu-20.04.5-live-server-arm64.iso \
+  -nographic
+```
+
+2) after qemu is set open it without iso.
+
+```sh
+qemu-system-aarch64 -machine virt -cpu cortex-a72 -m 2048 -bios /opt/homebrew/share/qemu/edk2-aarch64-code.fd -drive file=ubuntu-disk.qcow2,if=virtio,format=qcow2 -boot d -nographic -net user,hostfwd=tcp::10022-:22 -net nic
+```
 
 # Start Developping a module
 
@@ -48,7 +68,7 @@ clean:
 
 `make`
 
-# Load / Unload
+# Load / Unload / Show devices
 
 - `insmod main.ko`
 - `rmmod main.ko`
@@ -60,3 +80,5 @@ clean:
 - `lsmod | grep main`. Warning: `hello-1.ko` write ***modules*** as `hello_1`.
 
 - `ls -l /sys/module/<module_name>` //
+
+- show devices `cat /proc/devices`

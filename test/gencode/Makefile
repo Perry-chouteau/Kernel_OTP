@@ -1,4 +1,6 @@
-obj-m += loopcode.o
+obj-m += gencode.o
+#main-objs := chardev.o
+#ccflags-objs := -I $(PWD)
 PWD := $(CURDIR)
 
 #CFLAGS=-std=c99
