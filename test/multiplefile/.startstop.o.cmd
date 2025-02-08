@@ -1,0 +1,1 @@
+cmd_/home/k/Kernel_OTP/test/multiplefile/startstop.o := ld  -EL  -maarch64elf -z noexecstack     -r -o /home/k/Kernel_OTP/test/multiplefile/startstop.o /home/k/Kernel_OTP/test/multiplefile/start.o /home/k/Kernel_OTP/test/multiplefile/one.o /home/k/Kernel_OTP/test/multiplefile/stop.o

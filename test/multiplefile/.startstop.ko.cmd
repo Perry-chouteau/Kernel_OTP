@@ -1,0 +1,1 @@
+cmd_/home/k/Kernel_OTP/test/multiplefile/startstop.ko := ld -r  -EL  -maarch64elf -z noexecstack   --build-id  -T ./scripts/module-common.lds -T ./arch/arm64/kernel/module.lds -o /home/k/Kernel_OTP/test/multiplefile/startstop.ko /home/k/Kernel_OTP/test/multiplefile/startstop.o /home/k/Kernel_OTP/test/multiplefile/startstop.mod.o;  true

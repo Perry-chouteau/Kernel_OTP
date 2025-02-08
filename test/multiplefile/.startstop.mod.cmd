@@ -1,0 +1,1 @@
+cmd_/home/k/Kernel_OTP/test/multiplefile/startstop.mod := { echo  /home/k/Kernel_OTP/test/multiplefile/start.o /home/k/Kernel_OTP/test/multiplefile/one.o /home/k/Kernel_OTP/test/multiplefile/stop.o;  echo; } > /home/k/Kernel_OTP/test/multiplefile/startstop.mod
