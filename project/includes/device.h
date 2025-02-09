@@ -9,4 +9,7 @@
 #ifndef DEVICE_H
     #define DEVICE_H
 
+int dev_init(void);
+void dev_exit(void);
+
 #endif /* DEVICE_H */

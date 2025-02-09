@@ -806,6 +806,8 @@ deps_/home/k/Kernel_OTP/project/sources/main.o := \
     $(wildcard include/config/x86/espfix64.h) \
   arch/arm64/include/asm/extable.h \
   include/generated/uapi/linux/version.h \
+  /home/k/Kernel_OTP/project/sources/../includes/params.h \
+  /home/k/Kernel_OTP/project/sources/../includes/device.h \
 
 /home/k/Kernel_OTP/project/sources/main.o: $(deps_/home/k/Kernel_OTP/project/sources/main.o)
 

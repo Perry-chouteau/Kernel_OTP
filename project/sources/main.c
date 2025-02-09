@@ -27,10 +27,8 @@
 #include <asm/errno.h> 
 
 // Reference the parameter defined in params.c
-extern char *client_key;
-extern int timeout;
-extern int otp_type;
-extern char *code_array[];
+#include "../includes/params.h"
+#include "../includes/device.h"
 
 MODULE_AUTHOR("OTP");
 MODULE_DESCRIPTION("An otp");
@@ -43,21 +41,22 @@ static int __init otp_init(void)
     printk(KERN_INFO "timeout: %s\n", client_key);
     printk(KERN_INFO "timeout: %d\n", timeout);
     printk(KERN_INFO "ot_type: %s\n", (otp_type)? "true": "false");
-    
+    printk(KERN_INFO "code:\n");
     while (code_array[i] != NULL) {
-        printk(KERN_INFO "%i: %s\n", i, code_array[i]);
+        printk(KERN_INFO "\t- %s\n", code_array[i]);
         ++i;
-//        if (code_array[i] == NULL) {
-//            i = 0;
-//        }
+    }
+    if (code_array[i] == NULL) {
+        i = 0;
     }
 
+    dev_init();
     return 0;
 }
 
 static void __exit otp_exit(void)
 {
-    pr_info("otp_exit\n");
+    dev_exit();
 }
 
 module_init(otp_init); 

@@ -16,14 +16,14 @@
  * @brief client key
  */
 char *client_key = "changeme";
-module_param(client_key, charp, 0644);
+module_param(client_key, charp, 0664);
 MODULE_PARM_DESC(client_key, "client key is used to make code unique for each client");
 
 /**
  * @brief timeout in seconds
  */
 int timeout = 10;
-module_param(timeout, int, 0644);
+module_param(timeout, int, 0664);
 MODULE_PARM_DESC(timeout, "Interger define when to load a new code in second");
 
 /**
@@ -35,7 +35,7 @@ enum type_t {
 };
 
 int otp_type = LOOP;
-module_param(otp_type, int, 0644);
+module_param(otp_type, int, 0664);
 MODULE_PARM_DESC(otp_type, "OTP type: 0=loop over a list of code,1=gen a code using a key and time");
 
 /**

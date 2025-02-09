@@ -11,11 +11,11 @@ SRC_FILES := main.o \
 
 otp-objs := $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-INC_DIR := includes/
-
 PWD := $(CURDIR)
 
-ccflags-objs := -I $(PWD)/$(INC_DIR)
+#INC_DIR := includes/
+#EXTRA_CFLAGS += -I $(PWD)/$(INC_DIR)
+#KCFLAGS += -I$(PWD)/$(INC_DIR)
 
 all:
 	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules	
