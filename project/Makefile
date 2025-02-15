@@ -7,7 +7,7 @@ SRC_DIR := sources/
 SRC_FILES := main.o \
 			params.o \
 			device.o \
-			pseudo_fs.o
+			otp_sysfs.o
 
 otp-objs := $(addprefix $(SRC_DIR), $(SRC_FILES))
 
@@ -22,6 +22,7 @@ all:
 
 clean:
 	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	@rm -f otp_client
 
 fall: all
 	@rm -rf $(BUILD_DIR)
@@ -36,4 +37,7 @@ re: clean all
 
 fre: fclean fall
 
-.PHONY: all fall clean fclean re fre
+client:
+	$(CC) -o otp_client sources/otp_client.c
+
+.PHONY: all fall clean fclean re fre client

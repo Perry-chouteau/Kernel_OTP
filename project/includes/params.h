@@ -7,12 +7,11 @@
  */
 
 #ifndef PARAMS_H
-    #define PARAMS_H
+#define PARAMS_H
 
 extern char *client_key;
 extern int timeout;
 extern int otp_type;
 extern char *code_array[];
- 
-#endif /* PARAMS_H */
 
+#endif /* PARAMS_H */

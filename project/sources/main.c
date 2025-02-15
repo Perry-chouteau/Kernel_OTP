@@ -29,6 +29,7 @@
 // Reference the parameter defined in params.c
 #include "../includes/params.h"
 #include "../includes/device.h"
+#include "../includes/otp_sysfs.h"
 
 MODULE_AUTHOR("OTP");
 MODULE_DESCRIPTION("An otp");
@@ -51,11 +52,13 @@ static int __init otp_init(void)
     }
 
     dev_init();
+    otp_sysfs_init();
     return 0;
 }
 
 static void __exit otp_exit(void)
 {
+    otp_sysfs_exit();
     dev_exit();
 }
 
